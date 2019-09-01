@@ -1,8 +1,7 @@
-from flask import Flask, make_response, Response
-from flask import render_template
-from flask import request
+from flask import Flask, make_response, Response, redirect, render_template, request, url_for, abort, json
 from flask_script import Manager
 import uuid
+
 
 app = Flask(__name__)
 manage = Manager(app)
@@ -64,6 +63,27 @@ def res():
     # response = make_response('<h1>响应</h1>', 200)  # 制作response响应类型
     response = Response(response='德玛西亚', status=200)  # 创建response响应类型
     return response
+
+
+@app.route('/redirect/', methods=['GET'])
+def re_to():
+    response = redirect(url_for('login'))
+    print(response)
+    print(type(response))
+    return response
+
+
+@app.route('/abort/', methods=['GET'])
+def abor_t():
+    abort(405)
+
+
+# 返回json格式的响应
+@app.route('/json/', methods=['GET'])
+def get_json():
+    result = json.jsonify(name='zhangyp', age='25')
+    # response = Response(response='{"name": "zhangyp"}', content_type='application/json', status=200)
+    return result
 
 
 if __name__ == '__main__':
