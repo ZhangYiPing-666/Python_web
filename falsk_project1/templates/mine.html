@@ -1,6 +1,28 @@
 {% extends 'index.html' %}
 
+{% from 'index.html' import hello %}
+
+{% block extCSS %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
 {% block header %}
     {{ super() }}
-    <h1>123456</h1>
+    {{ hello('xiaom') }}
 {% endblock %}
+
+{% block hobes %}
+    <ol>
+    {% for i in hobes %}
+        <li>i</li>
+    {% endfor %}
+    </ol>
+{% endblock %}
+
+{% block content %}
+    {% include 'conten.html' %}
+{% endblock %}
+
+
+

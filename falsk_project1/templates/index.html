@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 
 {% block extCSS %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index') }} ">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }} ">
 {% endblock %}
 
 {% block header %}
     <h2>我很优秀</h2>
 {% endblock %}
+
+{% macro hello(name) %}
+    <h1>hello,{{ name }}</h1>
+{% endmacro %}

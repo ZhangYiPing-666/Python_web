@@ -15,7 +15,7 @@ def hello_world():
 
 @blue.route('/index/')
 def index():
-    return render_template("123.html")
+    return render_template("index.html")
 
 
 @blue.route('/mine/')
